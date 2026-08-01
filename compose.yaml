@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: react-market-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: marketplace_user
+      POSTGRES_PASSWORD: marketplace_password
+      POSTGRES_DB: marketplace
+    ports:
+      - "5433:5432"
+    volumes:
+      - marketplace_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  marketplace_postgres_data:
