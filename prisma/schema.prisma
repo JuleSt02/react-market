@@ -24,7 +24,7 @@ model Sauce {
   price         Decimal   @db.Decimal(10, 2)
   heatLevel     HeatLevel
   originCountry String
-  image         String
+  image         String?
   sellerId      Int
   seller        User      @relation(fields: [sellerId], references: [id])
   createdAt     DateTime  @default(now())

@@ -1,19 +1,18 @@
-import { Sauce } from "@prisma/client"
-import { prisma} from "@/lib/prisma";
+import { Sauce } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { SauceFilters } from "@/app/schemas/sauce-filters-schema";
 import { Prisma } from "@prisma/client";
 import { PaginationParams } from "@/app/schemas/pagination";
 
-
 export const getAllSauces = async (
-  filters: SauceFilters, pagination: PaginationParams
-): Promise<{sauces: Sauce[]; totalCount: number}> => {
+  filters: SauceFilters,
+  pagination: PaginationParams,
+): Promise<{ sauces: Sauce[]; totalCount: number }> => {
   const { query, price, heatLevel } = filters;
-  
-  const {page, pageSize} = pagination
+
+  const { page, pageSize } = pagination;
 
   const skip = (page - 1) * pageSize;
-
 
   const where: Prisma.SauceWhereInput = {};
 
@@ -49,5 +48,5 @@ export const getAllSauces = async (
     prisma.sauce.count({ where }),
   ]);
 
-  return {sauces,totalCount};
+  return { sauces, totalCount };
 };

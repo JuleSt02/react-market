@@ -1,8 +1,8 @@
 import "dotenv/config";
 
-import { HeatLevel ,Prisma } from "@prisma/client";
+import { HeatLevel, Prisma } from "@prisma/client";
 
-import { prisma } from "../lib/prisma"
+import { prisma } from "../lib/prisma";
 
 const sauces = [
   {
@@ -25,8 +25,7 @@ const sauces = [
   },
   {
     title: "Pineapple Ember",
-    description:
-      "Tropical pineapple balanced with lime and a soft chili heat.",
+    description: "Tropical pineapple balanced with lime and a soft chili heat.",
     price: "7.50",
     heatLevel: HeatLevel.WARM,
     originCountry: "Costa Rica",
@@ -88,8 +87,7 @@ const sauces = [
   },
   {
     title: "Garlic Fireline",
-    description:
-      "A bold garlic-forward sauce powered by red habanero peppers.",
+    description: "A bold garlic-forward sauce powered by red habanero peppers.",
     price: "8.40",
     heatLevel: HeatLevel.HOT,
     originCountry: "Spain",
@@ -97,8 +95,7 @@ const sauces = [
   },
   {
     title: "Scorpion Orchard",
-    description:
-      "Trinidad scorpion heat softened slightly by apple and pear.",
+    description: "Trinidad scorpion heat softened slightly by apple and pear.",
     price: "10.50",
     heatLevel: HeatLevel.FIERY,
     originCountry: "Trinidad and Tobago",

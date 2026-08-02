@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function SauceFilter() {
   const router = useRouter();
@@ -12,16 +8,14 @@ export default function SauceFilter() {
   const searchParams = useSearchParams();
 
   function updateSauceFilter(key: string, value: string) {
-    const params = new URLSearchParams(
-      searchParams.toString(),
-    );
+    const params = new URLSearchParams(searchParams.toString());
 
     if (value) {
       params.set(key, value);
     } else {
       params.delete(key);
     }
-    
+
     //reset pagination whenever a filter changes
     params.set("page", "1");
 
@@ -29,19 +23,18 @@ export default function SauceFilter() {
   }
 
   return (
-    <div>
+    <div className="flex flex-wrap items-center justify-center gap-4">
       <input
         defaultValue={searchParams.get("query") ?? ""}
-        onChange={(event) =>
-          updateSauceFilter("query", event.target.value)
-        }
+        onChange={(event) => updateSauceFilter("query", event.target.value)}
+        placeholder="Search sauces..."
+        className="w-64 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm shadow-sm focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200"
       />
 
       <select
         defaultValue={searchParams.get("price") ?? ""}
-        onChange={(event) =>
-          updateSauceFilter("price", event.target.value)
-        }
+        onChange={(event) => updateSauceFilter("price", event.target.value)}
+        className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm shadow-sm outline-none"
       >
         <option value="">All prices</option>
         <option value="5">Up to 5€</option>
@@ -49,15 +42,9 @@ export default function SauceFilter() {
       </select>
 
       <select
-        defaultValue={
-          searchParams.get("heatLevel") ?? ""
-        }
-        onChange={(event) =>
-          updateSauceFilter(
-            "heatLevel",
-            event.target.value,
-          )
-        }
+        defaultValue={searchParams.get("heatLevel") ?? ""}
+        onChange={(event) => updateSauceFilter("heatLevel", event.target.value)}
+        className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm shadow-sm focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200"
       >
         <option value="">All heat levels</option>
         <option value="MILD">MILD</option>
