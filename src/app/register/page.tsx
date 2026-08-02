@@ -2,16 +2,16 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { login, type LoginState } from "./action";
+import { register, type RegisterState } from "./action";
 
-const initialState: LoginState = {};
+const initialState: RegisterState = {};
 
-export default function LoginPage() {
-  const [state, formAction, isPending] = useActionState(login, initialState);
+export default function RegisterPage() {
+  const [state, formAction, isPending] = useActionState(register, initialState);
 
   return (
     <main className="mx-auto max-w-sm p-6">
-      <h1 className="mb-6 text-2xl font-bold">Login</h1>
+      <h1 className="mb-6 text-2xl font-bold">Register</h1>
 
       <form action={formAction} className="flex flex-col gap-4">
         <div>
@@ -36,6 +36,7 @@ export default function LoginPage() {
             name="password"
             type="password"
             required
+            minLength={8}
             className="mt-1 w-full rounded border px-3 py-2"
           />
         </div>
@@ -49,7 +50,7 @@ export default function LoginPage() {
           disabled={isPending}
           className="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50"
         >
-          {isPending ? "Logging in..." : "Login"}
+          {isPending ? "Creating account..." : "Register"}
         </button>
       </form>
     </main>
